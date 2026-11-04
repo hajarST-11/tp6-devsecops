@@ -1,0 +1,25 @@
+name: Secure CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@ # 
+        with:
+          persist-credentials: false
+
+      - name: Check repository
+        run: |
+          pwd
+          ls -la
